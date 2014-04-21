@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= t("app_title", :default => "Training, HR, and Incident Database") %></title>
+    <meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noarchive">
+<%= stylesheet_link_tag "application" %>
+<%= csrf_meta_tag %>
+<%= javascript_include_tag "application" %>
+</head>
+<body>
+
+
+<!-- Container-->
+<div class="container">
+
+  <!-- Alert Message
+================================================== -->
+
+   <!-- Main Content
+================================================== -->
+   <%= yield %>
+</div>
+<!-- /container -->
+<!-- Footer
+================================================== -->
+</body>
+</html>

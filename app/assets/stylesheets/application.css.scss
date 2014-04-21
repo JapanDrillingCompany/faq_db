@@ -1,0 +1,17 @@
+$iconSpritePath: '';
+$iconWhiteSpritePath: '';
+@import 'bootstrap';
+body { padding-top: 60px; }
+
+.pagination {
+    height: 72px;
+    margin: 18px 0;
+}
+
+body .modal {
+    /* new custom width */
+    width: 960px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -480px;
+    max-height: 960px;
+}

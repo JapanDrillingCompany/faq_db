@@ -1,0 +1,2 @@
+module Publicity::QasHelper
+end

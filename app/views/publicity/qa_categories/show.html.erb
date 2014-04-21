@@ -1,0 +1,9 @@
+<!-- Navigation Menu including Bread Crumb Menu
+================================================== -->
+<%= render 'shared/breadcrumbs' %>
+        <h2><%= t("activerecord.attributes.publicity/qa_category.name", :default => t("activerecord.labels.name", :default => "Name")) %></h2>
+         <h3><%= @qa_category.name %></h3>
+      <div class="form-actions">
+          <%= edit_button(@qa_category) %>
+	      <%= destroy_button(@qa_category) %>
+      </div>

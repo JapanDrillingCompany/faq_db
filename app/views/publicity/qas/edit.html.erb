@@ -1,0 +1,11 @@
+<!-- Navigation Menu including Bread Crumb Menu
+================================================== -->
+<%= render 'shared/breadcrumbs' %>
+
+  <div class="content">
+    <h1><%= t("action.edit", :default => "Edit") %> <%= t("activerecord.models.publicity/qa", :default => "FAQ") %> ID <%= @qa.id %></h1>
+    <div class="inner">
+        <%= render 'form' %>
+    </div>
+  </div>
+</div>

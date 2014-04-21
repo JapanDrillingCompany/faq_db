@@ -1,0 +1,14 @@
+    <footer class="footer">
+	    <div class='container'>
+		    <%= content_tag(:div, :id => 'back-to-top', :style => 'position:fixed;right:35px;bottom:35px') do %><a href="#"><%= content_tag(:i, "", :class => "icon-arrow-up") %>Back to top</a><% end %>
+	        <%= content_tag(:div, :class => 'row') do %>
+	          <%= content_tag(:div, :class => 'span8') do %>
+				<p>Built with <%= link_to "Ruby On Rails", 'http://rubyonrails.org/' %> framework.  Hosted on  <%= link_to "Heroku", 'http://www.heroku.com/' %> managed by <%= link_to "Sales Force Inc", 'http://www.salesforce.com/' %>, and <%= link_to "Amazon S3", 'http://aws.amazon.com/en/s3/' %> by Amazon.com.</p>
+	          <% end %>
+	          <%= content_tag(:div, :class => 'span4') do %>
+				<%= link_to_unless_current "English", locale: "en" %> |
+				<%= link_to_unless_current "Japanese", locale: "ja" %>
+	          <% end %>
+			<% end %>
+	    </div>
+    </footer>

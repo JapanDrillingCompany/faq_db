@@ -1,0 +1,21 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#address_search">
+      <h3><i class="icon-home"></i> <%= t("activerecord.models.personnel/address", :default => "Address") %> <%= t("search_column", :default => "Attributes") %></h3>
+    </a>
+  </div>
+<div id="address_search" class="accordion-body collapse">
+  <div class="accordion-inner">
+<dt><%= label :country, t("activerecord.attributes.personnel/address.country", :default => "Country") %></dt>
+<dd><%= autocomplete_field_tag :country, '', autocomplete_country_printable_name_personnel_addresses_path, :class => 'input-small', :placeholder => 'Japan' %></dd>
+<dt><%= label :pref, t("activerecord.attributes.personnel/address.pref", :default => "Preference") %></dt>
+<dd><%= text_field_tag :pref, params[:pref], :class => 'input-small', :placeholder => 'Kanagawa' %></dd>
+<dt><%= label :pref_jp, t("activerecord.attributes.personnel/address.pref_jp", :default => "Preference Jp") %></dt>
+<dd><%= text_field_tag :pref_jp, params[:pref_jp], :class => 'input-small', :placeholder => '神奈川県' %></dd>
+<dt><%= label :personnel_address, t("activerecord.attributes.personnel/address.address", :default => "Address") %></dt>
+<dd><%= text_field_tag :address, params[:address], :class => 'input-small', :placeholder => 'Yokohama' %></dd>
+<dt><%= label :personnel_address_jp, t("activerecord.attributes.personnel/address.address_jp", :default => "Address Jp") %></dt>
+<dd><%= text_field_tag :address_jp, params[:address_jp], :class => 'input-small', :placeholder => '横浜市' %></dd>
+  </div>
+</div>
+</div>

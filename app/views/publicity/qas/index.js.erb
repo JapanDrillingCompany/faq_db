@@ -1,0 +1,2 @@
+$("#publicity_qas").html("<%= raw escape_javascript(render("qas")) %>");
+document.title = "<%= j("#{params[:search].to_s.titleize} FAQs by #{(params[:sort] || 'name').titleize} - Page #{params[:page] || 1}") %>";

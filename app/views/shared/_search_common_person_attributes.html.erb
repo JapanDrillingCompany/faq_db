@@ -1,0 +1,51 @@
+ <div class="span2">
+		<dt><%= label :full_name, t("activerecord.attributes.person.full_name", :default => "Full Name") %></dt>
+		<dd><%= text_field_tag :first_name, params[:first_name], :class => 'input-mini', :placeholder => "John" %> <%= text_field_tag :last_name, params[:last_name], :class => 'input-mini', :placeholder => "Doe" %></dd>
+		<dt><%= label :full_name_jp, t("activerecord.attributes.person.full_name_jp", :default => "Fullname Jp") %></dt>
+		<dd><%= text_field_tag :last_name_jp, params[:last_name_jp], :class => 'input-mini', :placeholder => "白龍" %> <%= text_field_tag :first_name_jp, params[:first_name_jp], :class => 'input-mini', :placeholder => "太郎" %></dd>
+	<dt><%= label :category_job_type_id, t("activerecord.attributes.person.category_job_type_id", :default => "Job") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		<% else -%>
+		<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		<% end -%></dd>
+ </div>
+
+ <div class="span2">
+		<dt><%= label :unit_id, t("activerecord.models.unit", :default => "Organization") %></dt>
+		<dd><% if session[:locale]=="ja" -%>
+			<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		      <% else -%>
+			<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+			  <% end -%></dd>
+		<dt><%= label :category_location_type_id, t("activerecord.attributes.person.category_location_type_id", :default => "Location") %></dt>
+		<dd><% if session[:locale]=="ja" -%>
+			<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Location.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		      <% else -%>
+			<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Location.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+			  <% end -%></dd>
+		<dt><%= label :company_id, t("activerecord.attributes.person.company_id", :default => "Company") %></dt>
+		<dd><% if session[:locale]=="ja" -%>
+			<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		      <% else -%>
+			<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+			  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+			  <% end -%></dd>
+ </div>
+
+<div class="span2">
+	<dt><%= label :category_grade_type_id, t("activerecord.attributes.person.category_grade_type_id", :default => "Grade") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		<% else -%>
+		<%= select_tag(:category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.all, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		<% end -%></dd>
+	<dt><%= label :category_postion_type_id, t("activerecord.attributes.person.category_position_type_id", :default => "Position") %></dt>
+	<dd><%= select_tag(:category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %>
+	</dd>
+ </div>

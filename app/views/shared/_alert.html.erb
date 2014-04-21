@@ -1,0 +1,6 @@
+<% flash.each do |type, message| -%>
+  <div id="alert-message" class="alert <%= twitterized_type(type) %> alert-block">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= message %>
+  </div>
+<% end %>

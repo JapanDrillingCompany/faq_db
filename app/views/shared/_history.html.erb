@@ -1,0 +1,28 @@
+
+<div class="tab-pane" id="history">
+    <h2><%= t(:history) %></h2>
+	<table class='table table-striped table-condensed' id='history'>
+	<thead>
+		<tr>
+		<th><%= t("activerecord.attributes.history.date_time", :default => "Date/Time") %></th>
+		<th><%= t("activerecord.attributes.history.email", :default => "User") %></th>
+		<th><%= t("activerecord.attributes.history.event", :default => "Event") %></th>
+		<th><%= t("activerecord.attributes.history.resource", :default => "Resource") %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @histories.each do |history| %>
+		<tr>
+		<td><%= content_tag(:i, "", :class => "icon-calendar") %> <%= history.created_at %></td>
+		<% if history.user  %>
+			<td><%= content_tag(:i, "", :class => "icon-envelope") %> <%= history.user.email %></td>
+		<% else  %>
+			<td><%= content_tag(:i, "", :class => "icon-envelope") %></td>
+		<% end  %>	
+		<td><span span class="label <%= activity_event_type(history.event) %>"><%= history.event %></span></td>
+		<td><%= link_to t("activerecord.models.#{history.item_type.underscore}"), {:controller => history.item_type.tableize, :action => "show", :id=> history.item_id} %> #<%= history.item_id %></td>
+		</tr>
+		<% end %>
+    </tbody>
+    </table>
+</div>

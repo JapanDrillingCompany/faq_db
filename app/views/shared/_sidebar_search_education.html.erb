@@ -1,0 +1,16 @@
+<h3><i class="icon-bookmark"></i> <%= t("activerecord.models.personnel/education", :default => "Education") %> <%= t("search_column", :default => "Attributes") %></h3>
+<dt><%= label :category_education_type, t("activerecord.attributes.personnel/education.category_education_type_id", :default => "Education Type") %></dt>
+<dd><% if session[:locale]=="ja" -%>
+	<%= select_tag(:category_education_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Personnel::Category::EducationType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+	<% else -%>
+	<%= select_tag(:personnel_education_type_ids, options_for_select({'' => ""}) +
+  options_from_collection_for_select(Personnel::Category::EducationType.all, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+    <% end -%></dd>
+<dt><%= label :school_name, t("activerecord.attributes.personnel/education.school_name", :default => "School Name") %></dt>
+<dd><%= text_field_tag :school_name, params[:school_name], :class => "input-medium", :placeholder => "Singapore University" %></dd>
+<dt><%= label :school_name_jp, t("activerecord.attributes.personnel/education.school_name_jp", :default => "School Name Jp") %></dt>
+<dd><%= text_field_tag :school_name_jp, params[:school_name_jp], :class => "input-medium", :placeholder => "シンガポール大学" %></dd>
+<dt><%= label :faculty, t("activerecord.attributes.personnel/education.faculty", :default => "Faculty") %></dt>
+<dd><%= text_field_tag :faculty, params[:faculty], :class => "input-medium", :placeholder => "Law" %></dd>
+<dt><%= label :faculty_jp, t("activerecord.attributes.personnel/education.faculty_jp", :default => "Faculty Jp") %></dt>
+<dd><%= text_field_tag :faculty_jp, params[:faculty_jp], :class => "input-medium", :placeholder => "法学部" %></dd>

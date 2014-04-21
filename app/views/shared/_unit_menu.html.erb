@@ -1,0 +1,40 @@
+<h2 align="center">
+	<%= link_to unit_department_path(unit) do %>
+    <%= content_tag(:i, "", :class => "icon-align-center") %> List View
+    <% end %>
+    <%= link_to record_roster_path(unit) do %>
+	<%= content_tag(:i, "", :class => "icon-group") %> <%= t("activerecord.models.record/roster", :default => "roster") %>
+    <% end %>
+</h2>
+<h4 align="center">
+   	<div class="btn-group">
+	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+	<%= content_tag(:i, "", :class => "icon-table") %> <%= t("activerecord.models.training/training_matrix", :default => "Training　Matrix") %>
+	<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu">
+        <li class="nav-header">Company Standard (Valid in Specific Rig)</li>
+	    <li><%= link_to "#{unit.name_en} Standard(Company Standard)", training_unit_training_matrices_path(:unit_id => unit), data: {no_turbolink: true} %></li>
+		<li class="divider"></li>
+	    <li class="nav-header">JDC HSQE MS(JDC Standard Valid in All Rigs)</li>
+	    <% @menu_units.each do |unit| %>
+        <li><%= link_to unit.name_en, training_training_matrix_path(unit, :group_type => 'Mandatory'), data: {no_turbolink: true} %></li>
+	    <% end %>
+	</ul>
+	</div>
+   	<div class="btn-group">
+	<a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+	<%= content_tag(:i, "", :class => "icon-th-large") %> <%= t("activerecord.models.training/position_matrix", :default => "Position Matrix") %>
+	<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu">
+	    <li class="nav-header">JDC HSQE MS(JDC Standard Valid in All Rigs)</li>
+	    <li><%= link_to("JDC HSQE MS Mandatory", training_position_matrices_path(:group_type => 'Mandatory'), data: {no_turbolink: true}) %></li>
+	    <li><%= link_to("JDC HSQE MS In House", training_position_matrices_path(:group_type => 'In House'), data: {no_turbolink: true}) %></li>
+	    <li><%= link_to("JDC HSQE MS Misc", training_position_matrices_path(:group_type => 'Misc'), data: {no_turbolink: true}) %></li>
+		<li class="divider"></li>
+        <li class="nav-header">Company Standard (Valid in Specific Rig)</li>
+	    <li><%= link_to "#{unit.name_en} Standard", training_unit_position_matrices_path(:unit_id => unit), data: {no_turbolink: true} %></li>
+	</ul>
+	</div>
+</h4>

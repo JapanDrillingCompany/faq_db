@@ -1,0 +1,11 @@
+<%= form_tag publicity_qas_path, :method => 'get', :id => "index-search" do %>
+<dt><%= label :qa_category_id, "Project" %></dt>
+<dd class="publicity_qas_search_qa_category_id">
+ <%= select_tag(:qa_category_id, options_for_select({'--Please select--' => ""}) + options_from_collection_for_select(Publicity::QaCategory.find(:all), :id, :name), :class=> "input-medium") %></dd>
+<dt><%= label :keyword, "Keyword in Question and Answer." %></dt>
+<dd class="publicity_qas_search_keyword">
+ <%= text_field_tag :keyword, params[:keyword], :class => "input-medium" %></dd>
+<%= button_tag(:type => 'submit', :class => "btn btn-primary btn-large") do %>
+ <i class="icon-search icon-white"></i> <%= t("action.search", :default => "Search") %>
+<% end %>
+<% end %>

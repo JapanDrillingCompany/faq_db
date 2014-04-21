@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category1: MyString
+  category2: MyString
+  question: MyText
+  answer: MyText
+  note: MyText
+  qa_category: 
+  user_id: 1
+  reffile_file_name: MyString
+  reffile_content_type: MyString
+  reffile_file_size: 1
+  reffile_updated_at: 2014-04-14 09:47:36
+  classification_type_id: 1
+  category_type_id: 1
+  rate: 1
+
+two:
+  category1: MyString
+  category2: MyString
+  question: MyText
+  answer: MyText
+  note: MyText
+  qa_category: 
+  user_id: 1
+  reffile_file_name: MyString
+  reffile_content_type: MyString
+  reffile_file_size: 1
+  reffile_updated_at: 2014-04-14 09:47:36
+  classification_type_id: 1
+  category_type_id: 1
+  rate: 1

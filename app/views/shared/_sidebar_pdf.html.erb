@@ -1,0 +1,9 @@
+<h3>PDF Download</h3>
+<div class="content">
+  <dl>
+	  <dd class="pdf_export"></dd>
+      <dt><%= link_to params.merge(:format => 'pdf'), :target => "_blank", :class => "btn btn-danger", :rel => "tooltip", :title =>"Please click here to download pdf version of the page." do %>
+			<i class="icon-file icon-white"></i> Download PDF
+			<% end %></dt>
+  </dl>
+</div>

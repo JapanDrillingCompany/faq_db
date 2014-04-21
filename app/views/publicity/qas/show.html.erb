@@ -1,0 +1,27 @@
+<!-- Navigation Menu including Bread Crumb Menu
+================================================== -->
+<%= render 'shared/breadcrumbs' %>
+
+        <h2><%= t("activerecord.attributes.publicity/qa.question", :default => "Question") %></h2>
+        <p><%= @qa.question %>(<%=h @qa.qa_category.name %>)</p>
+        <h2><%= t("activerecord.attributes.publicity/qa.answer", :default => "Answer") %></h2>
+        <p><%= (hbr(@qa.answer)).html_safe %></p>
+        <p>
+          <b>以上、ご回答申し上げました。</b>
+        </p>
+		      <div class="form-actions">
+		        <%= link_to publicity_qa_path(@qa,{:format => 'pdf'}), :target => "_blank", :class => "btn btn-inverse" do %>
+				<i class="icon-file icon-white"></i> PDF
+				<% end %>
+	          <%= edit_button(@qa) %>
+		      <%= destroy_button(@qa) %>
+		      </div>
+
+        <p style="font-size: 200%">
+        <%= link_to "参考資料", @qa.reffile.url, :target => "_blank" unless @qa.reffile_file_name.nil?  %>
+        </p>
+        <p>
+          <b><%= t("activerecord.attributes.qa.note", :default => "Note") %>:</b>
+          <span class="gray"><%= @qa.note %></span>
+        </p>
+</div>

@@ -1,0 +1,9 @@
+<h3>Excel Download</h3>
+<div class="content">
+  <dl>
+	  <dd class="excel_export"></dd>
+      <dt><%= link_to params.merge(:format => 'xls'), :target => "_blank", :class => "btn btn-danger", :rel => "tooltip", :title =>"Please click here to download Excel version of the list." do %>
+			<i class="icon-th icon-white"></i> Download Excel
+			<% end %></dt>
+  </dl>
+</div>

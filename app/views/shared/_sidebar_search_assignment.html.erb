@@ -1,0 +1,40 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#assignment_search">
+      <h3><i class="icon-home"></i> <%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize) %> <%= t("search_column", :default => "Attributes") %></h3>
+    </a>
+  </div>
+<div id="assigment_search" class="accordion-body">
+  <div class="accordion-inner">
+	<dt><%= label :start_date, "Start Date" %></dt>
+	<dd class="assignment_search_start_date_range">
+	    <%= text_field_tag :start_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-04-01" %> -
+	    <%= text_field_tag :start_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-04-01" %></dd>
+	<dt><%= label :to_unit_id, t("activerecord.models.unit", :default => "Organization") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:to_unit_ids, options_for_select({'' => ""}) +
+		  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+	      <% else -%>
+		<%= select_tag(:to_unit_ids, options_for_select({'' => ""}) +
+		  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		  <% end -%></dd>
+	<dt><%= label :to_category_location_type_id, t("activerecord.attributes.person.category_location_type_id", :default => "Location") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:to_category_location_type_ids, options_for_select({'' => ""}) +
+		  options_from_collection_for_select(Unit::Location.active, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+	      <% else -%>
+		<%= select_tag(:to_category_location_type_ids, options_for_select({'' => ""}) +
+		  options_from_collection_for_select(Unit::Location.active, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		  <% end -%></dd>
+	<dt><%= label :to_category_grade_type_id, t("activerecord.attributes.person.category_grade_type_id", :default => "Grade") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:to_category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		<% else -%>
+		<%= select_tag(:to_category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.all, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		<% end -%></dd>
+	<dt><%= label :to_category_postion_type_id, t("activerecord.attributes.person.category_position_type_id", :default => "Position") %></dt>
+	<dd><%= select_tag(:to_category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %>
+	</dd>
+  </div>
+</div>
+</div>

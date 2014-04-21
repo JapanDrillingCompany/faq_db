@@ -1,0 +1,42 @@
+<div class="well sidebar_search_publicity_qas">
+  <h3><%= t("action.search", :default => "Search") %></h3>
+      <%= form_tag publicity_qas_path, :method => 'get', :id => "sidebar_search" do %>
+		<dt><%= label :qa_category_id, "Project" %></dt>
+		<dd class="publicity_qas_search_qa_category_id">
+		    <%= select_tag(:qa_category_id, options_for_select({'--Please select--' => ""}) + options_from_collection_for_select(Publicity::QaCategory.find(:all), :id, :name), :class=> "input-medium") %></dd>
+		<dt><%= label :keyword, "Keyword in Question and Answer." %></dt>
+		<dd class="publicity_qas_search_keyword">
+		    <%= text_field_tag :keyword, params[:keyword], :class => "input-medium" %></dd>
+            <%= button_tag(:type => 'submit', :class => "btn btn-primary btn-large") do %>
+               <i class="icon-search icon-white"></i> Search
+            <% end %>
+      <% end %>
+  <h3>Tag Cloud</h3>
+    <h4>Keyword</h4>
+    <p>
+       <% @tags = Publicity::Qa.tag_counts %>
+         <% tag_cloud(@tags, ['tag-x-small', 'tag-small', 'tag-medium', 'tag-large', 'tag-x-large']) do |tag, css_class| %>
+         <%= link_to tag.name, publicity_qas_path(:tag=>tag.name), :class => css_class %>(<%= tag.count %>)
+       <% end %>
+    </p>
+    <h4>Department</h4>
+    <p>
+       <% @departments = Publicity::Qa.tag_counts_on(:departments) %>
+         <% tag_cloud(@departments, ['tag-x-small', 'tag-small', 'tag-medium', 'tag-large', 'tag-x-large']) do |department, css_class| %>
+         <%= link_to department.name, publicity_qas_path(:department=>department.name), :class => css_class %>(<%= department.count %>)
+       <% end %>
+    </p>
+    <h4>Director</h4>
+    <p>
+       <% @directors = Publicity::Qa.tag_counts_on(:directors) %>
+         <% tag_cloud(@directors, ['tag-x-small', 'tag-small', 'tag-medium', 'tag-large', 'tag-x-large']) do |director, css_class| %>
+         <%= link_to director.name, publicity_qas_path(:director => director.name), :class => css_class %>(<%= director.count %>)
+       <% end %>
+    </p>
+
+  <h3>Project</h3>
+    <p>
+		<%= render "qa_category_list", :qa_categories => Publicity::QaCategory.all %>
+    </p>
+  <%= render 'shared/sidebar_excel' %>
+</div>

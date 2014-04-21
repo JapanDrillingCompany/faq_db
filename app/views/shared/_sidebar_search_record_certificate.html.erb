@@ -1,0 +1,17 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#certificate_search">
+      <h3><i class="icon-book"></i> <%= t("activerecord.models.record/certificate", :default => "Certificate") %> <%= t("search_column", :default => "Attributes") %></h3>
+    </a>
+  </div>
+<div id="certificate_search" class="accordion-body collapse in">
+  <div class="accordion-inner">
+<dt><%= label :acquire_date_range, t("activerecord.attributes.record/certificate.acquire_date_range", :default => "Acquire Date Range") %></dt>
+<dd><%= text_field_tag :acquire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-01-01" %> -
+    <%= text_field_tag :acquire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2005-01-01" %></dd>
+<dt><%= label :expire_date_range, t("activerecord.attributes.record/certificate.expire_date_range", :default => "Expire Date Range") %></dt>
+<dd><%= text_field_tag :expire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-01-01" %> -
+    <%= text_field_tag :expire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2015-01-01" %></dd>
+  </div>
+</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#training_search">
+      <h3><i class="icon-th-list"></i> <%= t("activerecord.models.record/training", :default => "Training Records") %> <%= t("search_column", :default => "Attributes") %></h3>
+    </a>
+  </div>
+<div id="training_search" class="accordion-body collapse in">
+  <div class="accordion-inner">
+<dt><%= label :category_training_type_ids, t("activerecord.attributes.record/training.category_training_type", :default => "Training Type") %></dt>
+<dd><%= select_tag(:category_training_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::TrainingType.all, :id, :name), :multiple => true, :style => "width:130px;") %>
+</dd>
+<dt><%= label :company, t("activerecord.attributes.record/training.company", :default => "Company") %></dt>
+<dd><%= text_field_tag :company, params[:company], :class => 'input-medium', :placeholder => "Training Company Ltd." %></dd>
+<dt><%= label :acquire_date_range, t("activerecord.attributes.record/training.acquire_date_range", :default => "Acquire Date Range") %></dt>
+<dd><%= text_field_tag :acquire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-01-01" %> -
+    <%= text_field_tag :acquire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2005-01-01" %></dd>
+<dt><%= label :expire_date_range, t("activerecord.attributes.record/training.expire_date_range", :default => "Expire Date Range") %></dt>
+<dd><%= text_field_tag :expire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-01-01" %> -
+	   <%= text_field_tag :expire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2015-01-01" %></dd>
+  </div>
+</div>
+</div>

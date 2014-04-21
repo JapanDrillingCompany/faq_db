@@ -1,0 +1,21 @@
+<%= simple_form_for(@qa, :validate => true) do |f| %>
+<div class="row">
+<%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="span12">
+    <%= f.input :qa_category_id, :hint => 'Ex: Basic Fire Fighting' do %>
+      <%= f.collection_select("qa_category_id", Publicity::QaCategory.find(:all, :order => "id DESC"), :id, :name) %>
+	<% end %>
+
+
+  <%= f.input :question, :as => :text, :input_html => { :class => "input-xxlarge", :rows => 4 } %>
+
+  <%= f.input :answer, :as => :text, :input_html => { :class => "input-xxlarge", :rows => 4 } %>
+
+  <%= f.input :note, :as => :text, :input_html => { :class => "input-xxlarge", :rows => 2 } %>
+
+  <%= f.input :reffile, :as => :file %>
+  <%= f.button :wrapped, :cancel => publicity_qas_path %>
+
+</div>
+</div>
+<% end -%>

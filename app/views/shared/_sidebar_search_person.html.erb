@@ -1,0 +1,73 @@
+	<dt><%= label :full_name, t("activerecord.attributes.person.full_name", :default => "Full Name") %></dt>
+	<dd><%= text_field_tag :first_name, params[:first_name], :class => 'input-mini', :placeholder => "John" %> <%= text_field_tag :last_name, params[:last_name], :class => 'input-mini', :placeholder => "Doe" %></dd>
+	<dt><%= label :full_name_jp, t("activerecord.attributes.person.full_name_jp", :default => "Fullname Jp") %></dt>
+	<dd><%= text_field_tag :last_name_jp, params[:last_name_jp], :class => 'input-mini', :placeholder => "白龍" %> <%= text_field_tag :first_name_jp, params[:first_name_jp], :class => 'input-mini', :placeholder => "太郎" %></dd>
+	<dt><%= label :category_job_type_id, t("activerecord.attributes.person.category_job_type_id", :default => "Job") %></dt>
+	<dd><% if session[:locale]=="ja" -%>
+		<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+		<% else -%>
+		<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.all, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+		<% end -%></dd>
+<dt><%= label :company_id, t("activerecord.attributes.person.company_id", :default => "Company") %></dt>
+<dd><% if session[:locale]=="ja" -%>
+	<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+      <% else -%>
+	<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+	  <% end -%></dd>
+<dt><%= label :unit_id, t("activerecord.models.unit", :default => "Organization") %></dt>
+<dd><% if session[:locale]=="ja" -%>
+	<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+      <% else -%>
+	<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_en), :multiple => true, :style => "width:130px;") %>
+	  <% end -%></dd>
+<dt><%= label :category_location_type_id, t("activerecord.attributes.person.category_location_type_id", :default => "Location") %></dt>
+<dd><% if session[:locale]=="ja" -%>
+	<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Location.active, :id, :name_jp), :multiple => true, :style => "width:130px;") %>
+      <% else -%>
+	<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+	  options_from_collection_for_select(Unit::Location.active, :id, :name_en), :multiple => true, :style => "width:130px;") %>
+	  <% end -%></dd>
+<% if session[:locale]=="ja" -%>
+<dt><%= label :category_grade_type_id, t("activerecord.attributes.person.category_grade_type_id", :default => "Grade") %></dt>
+<dd><%= select_tag(:category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %></dd>
+<dt><%= label :category_title_type_id, t("activerecord.attributes.person.category_title_type_id", :default => "Title") %></dt>
+<dd><%= select_tag(:category_title_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::TitleType.all, :id, :name_jp), :multiple => true, :style => "width:130px;") %></dd>
+<% end -%>
+<dt><%= label :category_postion_type_id, t("activerecord.attributes.person.category_position_type_id", :default => "Position") %></dt>
+<dd><%= select_tag(:category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %>
+</dd>
+<dt><%= label :join_date_range, t("activerecord.attributes.person.join_date_range", :default => "Join Date Range") %></dt>
+<dd class="people_search_join_date_range">
+    <%= text_field_tag :join_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2003-04-01" %> -
+    <%= text_field_tag :join_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2009-04-01" %></dd>
+<dt><%= label :birth_date_range, t("activerecord.attributes.person.birth_date_range", :default => "Birth Date Range") %></dt>
+<dd class="people_search_birth_date_range">
+    <%= text_field_tag :birth_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "1980-01-01" %> -
+    <%= text_field_tag :birth_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "1990-01-01" %></dd>
+<dt><%= label :retire_date_range, t("activerecord.attributes.person.retire_date_range", :default => "Retire Date Range") %></dt>
+<dd class="people_search_retire_date_range">
+    <%= text_field_tag :retire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-04-01" %> -
+    <%= text_field_tag :retire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-04-01" %></dd>
+<dt><%= label :graduate_date_range, t("activerecord.attributes.person.graduate_date_range", :default => "Graduate Date Range") %></dt>
+<dd class="people_search_graduate_date_range">
+    <%= text_field_tag :graduate_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-04-01" %> -
+    <%= text_field_tag :graduate_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-04-01" %></dd>
+<dt><%= label :age_range, t("activerecord.attributes.person.age_range", :default => "Age Range") %></dt>
+<dd class="people_search_age_range">
+    <%= text_field_tag :age_gte, nil, :size => 8, :class => 'input-mini', :placeholder => "20" %> -
+    <%= text_field_tag :age_lte, nil, :size => 8, :class => 'input-mini', :placeholder => "29" %></dd>
+<dt><%= label :service_year_range, t("activerecord.attributes.person.service_year_range", :default => "Service Year Range") %></dt>
+<dd class="people_search_service_year_range">
+    <%= text_field_tag :service_year_gte, nil, :size => 8, :class => 'input-mini', :size => 8, :placeholder => "10" %> -
+    <%= text_field_tag :service_year_lte, nil, :size => 8, :class => 'input-mini', :size => 8, :placeholder => "20" %></dd>
+<dt><%= label :gender, t("activerecord.attributes.person.gender", :default => "Gender") %></dt>
+<dd><%= select_tag(:gender, options_for_select({"Male" => "Male", "Female" => "Female"}, params[:gender]),  :include_blank => true, :style => "width:130px;" ) %></dd>
+<% if can? :manage, Person %>
+<dt><%= label :search_scope, t("activerecord.attributes.person.search_scope", :default => "Search Scope") %></dt>
+<dd><%= select_tag(:search_scope, options_for_select({"Active" => "active", "Retired" => "retired", "All" => "all"}, params[:search_scope]), :style => "width:130px;" ) %></dd>
+<% end %>

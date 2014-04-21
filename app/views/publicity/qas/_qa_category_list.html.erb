@@ -1,0 +1,4 @@
+<% for qa_category in qa_categories %>
+    <%=h qa_category.name %> | <%= link_to '編集', edit_publicity_qa_category_path(qa_category) %>
+    <br>
+<% end %>

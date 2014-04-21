@@ -1,0 +1,49 @@
+<div class="page-header">
+<h1><%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize) %>
+	<% if action_name == "index" %>
+      <%= t("action.list", :default => "List") %> <small><a href="#" data-toggle="tooltip" title="Visible number of <%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize.pluralize) %> on this page."><%= collection.size %></a>/<a href="#" rel="tooltip" title="Total number of <%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize.pluralize) %>"><%= resource_class.all.size %></a></small>
+    <% elsif action_name == "new" %>
+      <%= t("action.new", :default => "New") %>
+	<% elsif action_name == "show" %>
+      - <%= resource.id %> <%= content_tag(:small, t("action.show", :default => "Show")) %>
+	<% elsif action_name == "edit" %>
+      - <%= resource.id %> <%= content_tag(:small, t("action.edit", :default => "Edit")) %>
+	<% end %></h1>
+</div>
+<ul class="breadcrumb">
+      <li><%= link_to root_url, {:rel => "tooltip", :title => "Go back to the Top Page." } do %>
+		  <%= content_tag(:i, "", :class => "icon-home") %> <%= t("home_title", :default => "Home") %>
+		  <% end %><%= content_tag(:span, "/", :class => "divider") %></li>
+	<% if action_name == "index" %>
+	  <li class="active">
+	<% else %>
+	  <li>
+	<% end %>
+          <%= content_tag(:i, "", :class => "icon-th-list") %> <%= link_to "#{t("action.list", :default => "List")}", collection_url, {:rel => "tooltip", :title => "Check the list of data" }  %> (<%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize) %>)<%= content_tag(:span, "/", :class => "divider") %></li>
+	<% if action_name == "new" %>
+	  <li class="active">
+	<% else %>
+	  <li>
+	<% end %>
+	<% if can? :create, resource_class %>
+	      <%= link_to new_resource_url, {:rel => "tooltip", :title => "Add new data", :id => "new-link" } do %><%= content_tag(:i, "", :class => "icon-plus") %> <%= t("action.new", :default => "New") %><% end %>
+	      <%= content_tag(:span, "/", :class => "divider") %>
+	<% end %>
+	</li>
+	<% if action_name == "show" %>
+	  <li class="active"><%= link_to resource_url do %>
+		  <%= content_tag(:i, "", :class => "icon-info-sign") %> <%= t("action.show", :default => "Show") %>
+		  <% end %><%= content_tag(:span, "/", :class => "divider") %></li>
+	<% elsif action_name == "edit" %>
+	  <li class="active"><%= link_to edit_resource_url do %>
+		  <%= content_tag(:i, "", :class => "icon-pencil") %> <%= t("action.edit", :default => "Edit") %>
+		  <% end %><%= content_tag(:span, "/", :class => "divider") %></li>
+	<% end %>
+	<li><%= content_tag(:i, "", :class => "icon-backward") %> <%= link_to "Back", :back %></li>
+</ul>
+<% if action_name == "show" %>
+<ul class="pager">
+ <li class="previous"><%= link_to t("action.previous", :default => "Previous"), resource.previous_record %></li>	
+ <li class="next"><%= link_to t("action.next", :default => "Next"), resource.next_record %></li>
+</ul>
+<% end %>

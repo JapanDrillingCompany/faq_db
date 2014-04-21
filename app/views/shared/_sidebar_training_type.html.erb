@@ -1,0 +1,24 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#training_type_search">
+      <h3><%= t("activerecord.models.category/training_type", :default => "Training Types") %> <%= t("search_column", :default => "Attributes") %></h3>
+    </a>
+  </div>
+<div id="training_type_search" class="accordion-body collapse in">
+  <div class="accordion-inner">
+      <dt><%= label :category_training_type_ids, t("activerecord.attributes.record/training.category_training_type_id", :default => "Training Type") %></dt>
+ 	    <dd><%= select_tag(:category_training_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::TrainingType.all, :id, :name), :multiple => true, :style => "width:130px;") %></dd>
+<dt><span class="label label-important">Mandatory</span> at following positions</dt>
+<dd><%= select_tag(:mandatory_category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %></dd>
+
+<dt><span class="label label-warning">ASAP</span> at following positions</dt>
+<dd><%= select_tag(:asap_category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %></dd>
+
+<dt><span class="label label-success">Recommended</span> at following positions</dt>
+<dd><%= select_tag(:recommended_category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %></dd>
+
+<dt><span class="label">Stipulated</span> at following positions</dt>
+<dd><%= select_tag(:stipulated_category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.all, :id, :name), :multiple => true, :style => "width:130px;") %></dd>
+  </div>
+</div>
+</div>

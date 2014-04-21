@@ -1,0 +1,132 @@
+<div class="tab-pane" id="search-people">
+	<%= form_tag people_path, :method => 'get', :id => "search-tab", :class => "form-stacked" do %>
+	<%= hidden_field_tag :direction, params[:direction] %>
+	<%= hidden_field_tag :sort, params[:sort] %>
+    <% cache :suffix => :welcome_people_search, :expires_in => 1.hour do %>
+	<h2><%= t("activerecord.models.person", :default => "People") %><%= t(:action_search) %></h2>
+	<div class="row">
+	  <div class="span12">
+
+	   <div class="row">
+		  <div class="span2">
+				<dt><%= label :full_name, t("activerecord.attributes.person.full_name", :default => "Full Name") %></dt>
+				<dd><%= text_field_tag :first_name, params[:first_name], :class => 'input-mini', :placeholder => "John", :value => params[:first_name] %> <%= text_field_tag :last_name, params[:last_name], :class => 'input-mini', :placeholder => "Doe", :value => params[:last_name] %></dd>
+				<dt><%= label :full_name_jp, t("activerecord.attributes.person.full_name_jp", :default => "Fullname Jp") %></dt>
+				<dd><%= text_field_tag :last_name_jp, params[:last_name_jp], :class => 'input-mini', :placeholder => "白龍", :value => params[:last_name_jp] %> <%= text_field_tag :first_name_jp, params[:first_name_jp], :class => 'input-mini', :placeholder => "太郎", :value => params[:first_name_jp] %></dd>
+			<dt><%= label :category_job_type_id, t("activerecord.attributes.person.category_job_type_id", :default => "Job") %></dt>
+			<dd><% if session[:locale]=="ja" -%>
+				<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.order("position"), :id, :name_jp, params[:category_job_type_ids]), :multiple => true, :style => "width:130px;" ) %>
+				<% else -%>
+				<%= select_tag(:category_job_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::JobType.order("position"), :id, :name_en, params[:category_job_type_ids]), :multiple => true, :style => "width:130px;") %>
+				<% end -%></dd>
+			<dt><%= label :country_id, t("activerecord.attributes.person.country_id", :default => "Nationality") %></dt>
+			<dd><%= select_tag(:country_id_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Country.order("position"), :id, :printable_name, params[:country_ids]), :multiple => true, :style => "width:130px;") %></dd>
+			<dt><%= label :gender, t("activerecord.attributes.person.gender", :default => "Gender") %></dt>
+			<dd><%= select_tag(:gender, options_for_select({"Male" => "Male", "Female" => "Female"}, params[:gender]),  :include_blank => true, :style => "width:130px;" ) %></dd>
+			<% if can? :manage, Person %>
+						<dt><%= label :search_scope, t("activerecord.attributes.person.search_scope", :default => "Search Scope") %></dt>
+						<dd><%= select_tag(:search_scope, options_for_select({"Active" => "active", "Retired" => "retired", "All" => "all"}, params[:search_scope]), :style => "width:130px;" ) %></dd>
+			<% end %>
+		  </div>
+
+		  <div class="span2">
+				<dt><%= label :unit_id, t("activerecord.models.unit", :default => "Organization") %></dt>
+				<dd><% if session[:locale]=="ja" -%>
+					<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_jp, params[:unit_ids]), :multiple => true, :style => "width:130px;") %>
+				      <% else -%>
+					<%= select_tag(:unit_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Department.active.order("position"), :id, :name_en, params[:unit_ids]), :multiple => true, :style => "width:130px;") %>
+					  <% end -%></dd>
+				<dt><%= label :category_location_type_id, t("activerecord.attributes.person.category_location_type_id", :default => "Location") %></dt>
+				<dd><% if session[:locale]=="ja" -%>
+					<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Location.active.order("position"), :id, :name_jp, params[:category_location_type_ids]), :multiple => true, :style => "width:130px;") %>
+				      <% else -%>
+					<%= select_tag(:category_location_type_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Location.active.order("position"), :id, :name_en, params[:category_location_type_ids]), :multiple => true, :style => "width:130px;") %>
+					  <% end -%></dd>
+				<dt><%= label :company_id, t("activerecord.attributes.person.company_id", :default => "Company") %></dt>
+				<dd><% if session[:locale]=="ja" -%>
+					<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_jp, params[:company_ids]), :multiple => true, :style => "width:130px;") %>
+				      <% else -%>
+					<%= select_tag(:company_ids, options_for_select({'' => ""}) +
+					  options_from_collection_for_select(Unit::Company.active.order("position"), :id, :name_en, params[:company_ids]), :multiple => true, :style => "width:130px;") %>
+					  <% end -%></dd>
+	<% unless session[:locale]=="ja" -%>
+			<dt><%= label :school_name, t("activerecord.attributes.personnel/education.school_name", :default => "School Name") %></dt>
+			<dd><%= text_field_tag :school_name, params[:school_name], :class => "input-medium", :placeholder => "Singapore University", :value => params[:school_name] %></dd>
+			<dt><%= label :faculty, t("activerecord.attributes.personnel/education.faculty", :default => "Faculty") %></dt>
+			<dd><%= text_field_tag :faculty, params[:faculty], :class => "input-medium", :placeholder => "Law", :value => params[:faculty] %></dd>
+			<% else -%>
+			<dt><%= label :school_name_jp, t("activerecord.attributes.personnel/education.school_name_jp", :default => "School Name Jp") %></dt>
+			<dd><%= text_field_tag :school_name_jp, params[:school_name_jp], :class => "input-medium", :placeholder => "シンガポール大学", :value => params[:school_name_jp] %></dd>
+			<dt><%= label :faculty_jp, t("activerecord.attributes.personnel/education.faculty_jp", :default => "Faculty Jp") %></dt>
+			<dd><%= text_field_tag :faculty_jp, params[:faculty_jp], :class => "input-medium", :placeholder => "法学部", :value => params[:faculty_jp] %></dd>
+	<% end -%>
+		  </div>
+
+		 <div class="span2">
+			<dt><%= label :category_grade_type_id, t("activerecord.attributes.person.category_grade_type_id", :default => "Grade") %></dt>
+			<dd><% if session[:locale]=="ja" -%>
+				<%= select_tag(:category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.order("position"), :id, :name_jp, params[:category_grade_type_ids]), :multiple => true, :style => "width:130px;") %>
+				<% else -%>
+				<%= select_tag(:category_grade_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::GradeType.order("position"), :id, :name_en, params[:category_grade_type_ids]), :multiple => true, :style => "width:130px;") %>
+				<% end -%></dd>
+			<dt><%= label :category_postion_type_id, t("activerecord.attributes.person.category_position_type_id", :default => "Position") %></dt>
+			<dd><%= select_tag(:category_position_type_ids, options_for_select({'' => ""}) + options_from_collection_for_select(Category::PositionType.order("position"), :id, :name, params[:category_position_type_ids]), :multiple => true, :style => "width:130px;") %>
+			</dd>
+	<% unless session[:locale]=="ja" -%>
+		<dt><%= label :pref, t("activerecord.attributes.personnel/address.pref", :default => "Preference") %></dt>
+		<dd><%= text_field_tag :pref, params[:pref], :class => 'input-small', :placeholder => 'Kanagawa', :value => params[:pref] %></dd>
+		<dt><%= label :personnel_address, t("activerecord.attributes.personnel/address.address", :default => "Address") %></dt>
+		<dd><%= text_field_tag :address, params[:address], :class => 'input-small', :placeholder => 'Yokohama', :value => params[:address] %></dd>
+			<% else -%>
+		<dt><%= label :pref_jp, t("activerecord.attributes.personnel/address.pref_jp", :default => "Preference Jp") %></dt>
+		<dd><%= text_field_tag :pref_jp, params[:pref_jp], :class => 'input-small', :placeholder => '神奈川県', :value => params[:pref_jp] %></dd>
+		<dt><%= label :personnel_address_jp, t("activerecord.attributes.personnel/address.address_jp", :default => "Address Jp") %></dt>
+		<dd><%= text_field_tag :address_jp, params[:address_jp], :class => 'input-small', :placeholder => '横浜市', :value => params[:personnel_address_jp] %></dd>
+	    <dt><%= label :jdcempid, t("activerecord.attributes.person.jdcempid", :default => "JDC ID") %></dt>
+		<dd><%= text_field_tag :jdcempid, params[:jdcempid], :class => 'input-small', :placeholder => 'jdc01234', :value => params[:jdcempid] %></dd>
+	<% end -%>
+		 </div>
+
+		  <div class="span3">
+			<dt><%= label :join_date_range, t("activerecord.attributes.person.join_date_range", :default => "Join Date Range") %></dt>
+			<dd class="people_search_join_date_range">
+			    <%= text_field_tag :join_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2003-04-01", :value => params[:join_date_gte] %> -
+			    <%= text_field_tag :join_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2009-04-01", :value => params[:join_date_lte] %></dd>
+			<dt><%= label :birth_date_range, t("activerecord.attributes.person.birth_date_range", :default => "Birth Date Range") %></dt>
+			<dd class="people_search_birth_date_range">
+			    <%= text_field_tag :birth_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "1980-01-01", :value => params[:birth_date_gte] %> -
+			    <%= text_field_tag :birth_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "1990-01-01", :value => params[:birth_date_lte] %></dd>
+			<dt><%= label :retire_date_range, t("activerecord.attributes.person.retire_date_range", :default => "Retire Date Range") %></dt>
+			<dd class="people_search_retire_date_range">
+			    <%= text_field_tag :retire_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-04-01", :value => params[:retire_date_gte] %> -
+			    <%= text_field_tag :retire_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-04-01", :value => params[:retire_date_lte] %></dd>
+			<dt><%= label :graduate_date_range, t("activerecord.attributes.person.graduate_date_range", :default => "Graduate Date Range") %></dt>
+			<dd class="people_search_graduate_date_range">
+			    <%= text_field_tag :graduate_date_gte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2000-04-01", :value => params[:graduate_date_gte] %> -
+			    <%= text_field_tag :graduate_date_lte, nil, :class => 'datepicker input-small', :size => 8, :placeholder => "2010-04-01", :value => params[:graduate_date_lte] %></dd>
+			<dt><%= label :age_range, t("activerecord.attributes.person.age_range", :default => "Age Range") %></dt>
+			<dd class="people_search_age_range">
+			    <%= text_field_tag :age_gte, nil, :size => 8, :class => 'input-mini', :placeholder => "20", :value => params[:age_gte] %> -
+			    <%= text_field_tag :age_lte, nil, :size => 8, :class => 'input-mini', :placeholder => "29", :value => params[:age_lte] %></dd>
+			<dt><%= label :service_year_range, t("activerecord.attributes.person.service_year_range", :default => "Service Year Range") %></dt>
+			<dd class="people_search_service_year_range">
+			    <%= text_field_tag :service_year_gte, nil, :size => 8, :class => 'input-mini', :size => 8, :placeholder => "10", :value => params[:service_year_gte] %> -
+			    <%= text_field_tag :service_year_lte, nil, :size => 8, :class => 'input-mini', :size => 8, :placeholder => "20", :value => params[:service_year_lte] %></dd>
+            <dd><%= link_to people_path, :class => "btn btn-warning btn-large" do %>
+		        <i class="icon-stop icon-white"></i> <%= t("action.reset", :default => "Reset") %>
+		    <% end %>
+			<%= button_tag(:type => 'submit', :class => "btn btn-primary btn-large") do %>
+			    <i class="icon-search icon-white"></i> <%= t("action.search", :default => "Search") %>
+			<% end %>
+		 </div>
+	  </div>
+	 </div>
+	</div>
+	<% end %>
+	<% end %>
+</div>

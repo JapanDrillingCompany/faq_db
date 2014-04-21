@@ -1,0 +1,14 @@
+<ul class="breadcrumb">
+      <li><%= link_to root_url, {:rel => "tooltip", :title => "Go back to the Top Page." } do %>
+		  <%= content_tag(:i, "", :class => "icon-home") %> <%= t("home_title", :default => "Home") %>
+		  <% end %><%= content_tag(:span, "/", :class => "divider") %></li>
+	  <li><%= content_tag(:i, "", :class => "icon-th-list") %> <%= link_to "#{t("action.list", :default => "List")}", collection_url, {:rel => "tooltip", :title => "Check the list of data" }  %> (<%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize) %>)<%= content_tag(:span, "/", :class => "divider") %></li>
+
+	<li><% if can? :manage, resource_class %>
+	      <%= link_to new_resource_url, {:rel => "tooltip", :title => "Add new data" } do %><%= content_tag(:i, "", :class => "icon-plus") %> <%= t("action.new", :default => "New") %><% end %>
+	      <%= content_tag(:span, "/", :class => "divider") %>
+	<% end %></li>
+	<li class="active"><%= link_to resource_url do %>
+		   <%= content_tag(:i, "", :class => "icon-info-sign") %> <%= t("action.show", :default => "Show") %>
+		   <% end %></li>
+</ul>
