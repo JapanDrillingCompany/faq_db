@@ -6,8 +6,8 @@
 	 <thead>
 	  <tr>
 	    <th>ID</th>
-	    <th class="span9">Question</th>
-	    <th class="span2">Category</th>
+	    <th class="col-md-9">Question</th>
+	    <th class="col-md-2">Category</th>
 	    <th>Action</th>
 	  </tr>
 	 </thead>
@@ -17,35 +17,37 @@
 	        <td><%=h qa.id %><%= check_box_tag "qa_ids[]", qa.id, false, :class => 'shiftCheckbox' %></td>
 	        <td><a id="qa<%=h qa.id %>" href="#qa_modal-<%= qa.id %>" data-toggle="modal">
 	            <%= rm_html_tag(qa.question) %></a></td>
-	        <td><%=h qa.qa_category.try(:name) || "N/A" %>
-		
-		        <div id="qa_modal-<%= qa.id %>" class="modal modal-gallery hide fade">
-		          <div class="modal-header">
-		            <a class="close" data-dismiss="modal">×</a>
-		            <h3 class="modal-title"><%=h qa.id %> <%= t("activerecord.attributes.qa.question", :default => "Question") %></h3><br/>
-			        <p><%= qa.question %>(<%=h qa.qa_category.name %>)</p>
-		          </div>
-		          <div class="modal-body">
-				        <h1><%= t("activerecord.attributes.qa.answer", :default => "Answer") %></h1>
-				      <div class="inner">
-				        <p><%= (hbr(qa.answer)).html_safe %></p>
-				        <p>
-				          <b>以上、ご回答申し上げました。</b>
-				        </p>
-		          </div>
-		          <div class="modal-footer">
-					<%= show_button(qa) %>
-					<%= edit_button(qa) %>
-		          </div>
-		        </div>
-		</td>
+	        <td><%=h qa.qa_category.try(:name) || "N/A" %></td>
             <td class="last">
 	            <%= show_button qa %> <%= edit_button qa %>
-	            <%= link_to publicity_qa_path(qa,{:format => 'pdf'}), :class => "btn btn-inverse", :target => "_blank" do %>
+	            <%= link_to publicity_qa_path(qa,{:format => 'pdf'}), :class => "btn btn-success", :target => "_blank" do %>
 				<i class="icon-file"></i> PDF
 				<% end %>
 	        </td>
        </tr>
+       <div id="qa_modal-<%= qa.id %>" class="modal fade">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+         <div class="modal-header">
+           <a class="close" data-dismiss="modal">×</a>
+           <h3 class="modal-title"><%=h qa.id %> <%= t("activerecord.attributes.qa.question", :default => "Question") %></h3><br/>
+	        <p><%= qa.question %>(<%=h qa.qa_category.name %>)</p>
+         </div>
+         <div class="modal-body">
+		        <h1><%= t("activerecord.attributes.qa.answer", :default => "Answer") %></h1>
+		      <div class="inner">
+		        <p><%= (hbr(qa.answer)).html_safe %></p>
+		        <p>
+		          <b>以上、ご回答申し上げました。</b>
+		        </p>
+         </div>
+         <div class="modal-footer">
+			<%= show_button(qa) %>
+			<%= edit_button(qa) %>
+         </div>
+	       </div>
+	      </div>
+       </div>
 	 <% end %>
      </tbody>
     </table>

@@ -6,5 +6,9 @@
 
 # Publicity::QaCategories Controller Class
 class Publicity::QaCategoriesController < InheritedResources::Base
-  load_and_authorize_resource :class => "Publicity::QaCategory"
+
+  def build_resource_params
+    [params.fetch(:publicity_qa_category, {}).permit(:name)]
+  end
+
 end

@@ -10,9 +10,6 @@ class Publicity::Qa < ActiveRecord::Base
 # Setting Table Name
     self.table_name = 'publicity_qas'
 
-  # Mass Assignment
-    attr_accessible :category1, :category2, :question, :answer, :note, :qa_category_id, :user_id, :reffile_file_name, :reffile_content_type, :reffile_file_size, :reffile_updated_at, :classification_type_id, :category_type_id, :rate
-
   # Associations
     belongs_to :qa_category
 

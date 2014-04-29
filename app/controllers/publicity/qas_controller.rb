@@ -9,12 +9,10 @@ class Publicity::QasController < InheritedResources::Base
 
   def index
     @qas = Publicity::Qa.search(params).order('id DESC')
+    #@qas = Publicity::Qa.all
     respond_to do |format|
       format.html # index.html.erb
       format.js # index.js.erb
-      format.xls { headers["Content-Type"] = "application/vnd.ms-excel"
-              send_data @qas.to_xls_data(:columns => [:id, {:qa_category => [:id, :name] }, :question, :answer, :note, :created_at, :updated_at ]),
-              :filename => "qas_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.xls" }
     end
   end
 
@@ -50,6 +48,10 @@ class Publicity::QasController < InheritedResources::Base
     send_data @qas.to_xls_data(:columns => [:id, {:qa_category => [:id, :name] }, :question, :answer, :note, :created_at, :updated_at ]),
             :filename => "qas_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.xls"
 
+  end
+
+  def build_resource_params
+    [params.fetch(:publicity_qa, {}).permit(:category1, :category2, :question, :answer, :note, :qa_category_id, :user_id, :reffile_file_name, :reffile_content_type, :reffile_file_size, :reffile_updated_at, :classification_type_id, :category_type_id, :rate)]
   end
 
 end

@@ -10,9 +10,6 @@ class Publicity::QaCategory < ActiveRecord::Base
   # Setting Table Name
     self.table_name = 'publicity_qa_categories'
 
-  # Mass Assignment
-    attr_accessible :name
-
   # Associations
     has_many :qas, :dependent => :destroy
 
