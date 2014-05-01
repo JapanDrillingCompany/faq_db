@@ -1,0 +1,231 @@
+# -*- coding: utf-8 -*-
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    creating: 'Creating'
+    updating: 'Updating'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      html: '<abbr title="required">*</abbr>'
+    buttons:
+      or: 'Or'
+      cancel: 'Cancel'
+    hints:
+      person:
+        first_name_jp: 'Please put Japanese First Name. No English.'
+        last_name_jp: 'Please put Japanese Family Name. No English.'
+        first_name_jp_kana: 'Please put Japanese First Name in Kana. No English.'
+        last_name_jp_kana: 'Please put Japanese Family Name in Kana. No English.'
+        first_name: 'English First Name. No Japanese.'
+        middle_name: 'English Middle Name. No Japanese.'
+        last_name: 'English Family Name. No Japanese.'
+        join_date: 'Please select first day when the employment contract start. If you could not figure it out, please select today.'
+        birth_date: 'Please select birthday at passport.'
+        blood_type: 'Please select the blood type, but not mandatory.'
+        email: 'Please input corporate email address. Not private email address.'
+        gender: 'Most of employees are male'
+        photo: 'Employee photo is attachable. It is resized automaticaly.'
+        category_job_type: 'Please select the type of the employee.'
+        company: 'Please select employing company. If he is direct employed, select JDC. If he is dispatched from man power supply company, please select the company such as JAYA.'
+        unit: 'Please select the operations office ,　or department where the employee will be assigned.'
+        category_location_type: 'Please select location where the employee or crew work. Ex. Rig, Office'
+        category_position_type: 'Please select closest position. This is important since this position will be used to　calculate necessary and missing training.'
+        category_grade_type: 'Please selected the grade type for Japanese Employee.'
+        category_title_type: 'Please selected the title type for Japanese Employee.'
+        category_work_type: 'Please select the shift of the employee if it is available. This data will be used in crew roster.'
+        category_retire_type: 'Please select the retire type for resigned people. Most of the employee are N/A.'
+        working: 'Please check this checkbox on to make this employee visible. People with this checkbox are off will be invisible.'
+        company_id: 'Please select employing company. If he is direct employed, select JDC. If he is dispatched from man power supply company, please select the company such as JAYA.'
+        category_job_type_id: 'Please select the type of the employee.'
+        unit_id: 'Please select the operations office ,　or department where the employee will be assigned.'
+        category_location_type_id: 'Please select location where the employee or crew work. Ex. Rig, Office'
+        category_position_type_id: 'Please select closest position. This is important since this position will be used to　calculate necessary and missing training.'
+        calling_title: 'This will override HSQE Position at CV.'
+      assignment_employment:
+        start_date: 'Date when the employment contract was enacted.'
+        company_id: 'Please select the company name of the employment contract.'
+        category_job_type_id: 'Please select the job type for this employee.'
+        unit_id: 'Please select the name of the deparment or operations office where the employee was contracted.'
+      assignment_deployment:
+        start_date: 'Date when the change of working deparment or rig was enacted.'
+        company_id: 'Please select the name of the company.'
+        unit_id: 'Please select the name of the deparment or operations office.'
+        category_location_type_id: 'Please select the name of the working place, such as Rig, or Operations Office.'
+        leave: 'Please check here if the employee was suspended.'
+        next: "Please input if you have any note"
+      assignment_positioning:
+        start_date: 'Date when the position change was enacted.'
+        category_position_type_id: 'Please select closest position. This is important since this position will be used to　calculate necessary and missing training.'
+      assignment_grading:
+        start_date: 'Date when the grade of the employee was changed.'
+        category_grade_type_id: 'Grade designated by Internal Rule for Japanese Rule.'
+      assignment_titling:
+        start_date: 'Date when the title of the employee was change.'
+        category_title_type_id: 'Title designated by Internal Rule for Japanese Employees.'
+      assignment_retirement:
+        start_date: 'Date when the employee retired or resigned the company.'
+        category_retire_type_id: 'Please select the reason for retirement. This is not mandatory.'
+      personnel_address:
+        country1: 'Please input country of primary address.'
+        country2: 'Please input country of secondary address.'
+        zip1: 'Please input zip code of primary address.'
+        zip2: 'Please input zip code of secondary address.'
+        pref1: 'Please input prefecture of primary address in english.'
+        pref2: 'Please input prefecture of secondary address in english.'
+        pref_jp1: 'Please input prefecture of primary address in japanese.'
+        pref_jp2: 'Please input prefecture of secondary address in japanese.'
+        address1: 'Please input address of primary address in english.'
+        address2: 'Please input address of secondary address in english.'
+        address1_jp: 'Please input address of primary address in japanese.'
+        address2_jp: 'Please input address of secondary address in japanese.'
+        phone1: 'Please input the primary home phone number'
+        email1: 'Please input the personal email address other than corporate email address.'
+        mobile: 'Please input the mobile phone number'
+        phone2: 'Please input the secondary phone number'
+        email2: 'Please input the secondary personal email address other than corporate email address.'
+        mobile_email: 'Please input the mobile email address.'
+        contact_name1: 'Please input the name of the primary emergency contact.'
+        contact_relation1: 'Please input the type of the primary emergency contact.'
+        contact_tel1: 'Please input the phone number of the primary emergency contact.'
+        contact_email1: 'Please input the email of the primary emergency contact.'
+        contact_name2: 'Please input the name of the secondary emergency contact.'
+        contact_relation2: 'Please input the type of the secondary emergency contact.'
+        contact_tel2: 'Please input the phone number of the secondary emergency contact.'
+        contact_email2: 'Please input the email of the secondary emergency contact.'
+      personnel_education:
+        category_education_type: 'Please select the Education Type.' #g
+        school_name: 'Please input School Name in English.'
+        school_name_jp: 'Please input School Name in Japanese. English School name will be copy if blank?'
+        faculty: 'Please input the faculty in English'
+        faculty_jp: 'Please input faculty in Japanese. English Faculty will be copy if blank?'
+        course: 'Please input the course in English.'
+        course_jp: 'Please input the course in Japanese. English Course will be copy if blank?'
+        diploma1: 'Certificate is attachable.'
+        diploma2: '2nd Certificate is attachable.．'
+      personnel_interview:
+        performance: "Please select from 1(Low) to 7(Hight)" #g
+        accountability: "Please select from 1(Low) to 7(Hight)" #g
+        expertise: "Please select from 1(Low) to 7(Hight)" #g
+        leadership: "Please select from 1(Low) to 7(Hight)" #g
+        communication: "Please select from 1(Low) to 7(Hight)" #g
+        hsqe: "Please select from 1(Low) to 7(Hight)" #g
+        performance_remark: "Please write remark(Performance)" #g
+        accountability_remark: "Please write remark(Accountability)" #g
+        expertise_remark: "Please write remark(Expertise)" #g
+        leadership_remark: "Please write remark(Leadership)" #g
+        communication_remark: "Please write remark(Communication/Teamwork)" #g
+        hsqe_remark: "Please write remark(HSQE)" #g
+        content: "Content of Interview is recommended" #g
+        warning: "Please check here if the warning letter was issued" #g
+      personnel_passport:
+        country: 'Please input the nationality stated on the passport. Ex United States'
+        passport_number: 'Highly recommended. This is used to identify the person at the legal document.'
+        expire_date: 'Expire date is highly recommended for email alert.'
+        issue_date: 'Issue date is optional.'
+        location: 'Location on the passport.'
+        passport_copy: 'Attachment of the Passport copy is highly recommended.'
+      personnel_social_insurance:
+        type_insurance: 'Please select Social Insurance Type.'
+        date: 'Please input when does the Social Insurance Type was vested.'
+        basic_insurance: 'Please input Basic Pension Number.'
+        health_insurance: 'Please input Health Insurance Number.'
+        health_insurance_expire_date: 'Please input Health Insurance Expire Date.'
+        wealth_insurance: 'Please input Wealth Insurance Number.'
+        sailor_insurance: 'Please input Sailor Insurance Number.'
+        sailor_social_security_insurance: 'Please input Social Security Insurance Expire Date.'
+        employment_insurance: 'Please input Employment Insurance Number.'
+      training_seminar:
+        name: 'Please input name of the seminar.'
+        company: 'Please input name of the seminar.'
+        code: 'Please input seminar code if available.'
+        term: 'Please input days of the seminar.'
+        attend_date: 'Please input date when the seminar was held.'
+        expire_date: 'Please input expire date if available.'
+        cost_jp: 'Please input cost in Japanese Yen.'
+        cost_doller: 'Please input cost in US Doller.'
+        cost_eur: 'Please input cost in Eur.'
+      training_certificate:
+        name: 'Please type name of training, cource, certificate etc.'
+        training_company: 'Name of the training company issued the training certificate is recommend.'
+        dummy: 'Please check here if he or she does not have training, but pretend right hove the one. Ex:Have Advanced Well Control, but No Well Control Basic.'
+        acquire_date: 'Input of Issue date of the training is recommended. But this is not mandatory.'
+        expire_date: 'Please select expire date of the training. This is mandatory since this database send monthly email alert. For life time or no limit training certificate, please put 10 years after the aquire date.'
+        note: 'Any extra notes to record?'
+        certificate: 'Upload of PDF Copy of Training Certificate is highly recommended.'
+      record_training:
+        category_training_type: '<span class="label label-info">Warning</span> Well Controlls were renamed. <span class="label label-warning">Intermediate >> Fundamental Well Controll</span>, <span class="label label-important">Advance >> Supervisory Well Controll</span>. If you could not find proper HSQE training, please contact HSQE Dept.'
+        category_training_company: 'Name of the training company issued the certificate is recommended. Click <a href="/en/training/category/companies/new" target="_blank">here</a> and reload after save to add new company.'
+        dummy: 'Please check here if he or she does not have training, but pretend right hove the one. Ex:Have Advanced Well Control, but No Well Control Basic.'
+        acquire_date: 'Input of Issue date of the training is recommended. But this is not mandatory.'
+        expire_date: 'Please select expire date of the training. This is mandatory since this database send monthly email alert. For life time or no limit training certificate, please put 10 years after the aquire date.'
+        note: 'Any extra notes to record?'
+        certificate: 'Upload of PDF Copy of Training Certificate is highly recommended.'
+      marine_pocket_ledger:
+        marine_category_ledger_type: 'Please select type of Pocket Ledger.'
+        marine_category_seaman_type: 'Please select type of Seaman Position stated at Pocket Ledger.'
+        acquire_date: 'Acquire date is optional.'
+        expire_date: 'Expire date is highly recommended for email alert.'
+        diary: 'Attachment of the Pocket Ledger copy is highly recommended.'
+        number: 'Number to specify the Seaman Book.'
+        note: 'Any extra notes to record?'
+      incident_job:
+        name: 'Specify job title'
+        jsa_number: 'JSA ID number format: Rig Name – Department – Serial number – Revision number (e.g. N1-EG-003-01)'
+        category_location: 'Select rig location'
+        category_department: 'Select department '
+      incident_procedure:
+        step: 'Specify job procedure' #g
+        hazard: 'Specify hazards identified' #g
+        action: 'Specify the action of taken to mitigate the risks identified' #g
+        effectiveness: 'Specify effectiveness of the result of JSA' #g
+      incident_record:
+        category_report_status: 'Select the type of report: prompt or final'
+        category_responsibility: 'Select responsible party'
+        incident_date: 'Select issue date and time'
+        category_rig: 'Select rig on which incident occurred'
+        location: 'Identify location of incident'
+        person: 'Identify person reported the incident'
+        position: 'Specify job title(s) of above person(s).'
+        offshore_experience: 'Select years experience in offshore industry'
+        work_experience: 'Select years work experience on this rig'
+        supervisor: 'Specify name of supervisor of employee directly involved in incident'
+        witness: 'Specify names of any witnesses to incident'
+        cost: 'Write estimated cost of incident, and unit is in dollars.'
+        lost_day: 'The number of days that the injured person did not perform all of his regular duties.'
+        treatment_date: 'This is the first day than an injured person is unable to work, which will normally b e the day of the injury.'
+        restore_date: 'The date that the injured person returns to work.'
+        category_classification: 'Select incident classification'
+        description: 'Give detailed description of incident (note: this box will expand as you type)'
+        category_type: 'Select the incident type (note: if no appropriate category, specify in ‘other’ box)'
+        category_type_other: 'If Other selected, give details'
+        damage_injured_body: 'Select injured body part (note: if in appropriate category, specify in ‘other’ box)'
+        damage_injured_body_other: 'If Other selected, give details'
+        damage_equipment: 'Select the equipment in use at time of incident (note: if no appropriate category, specify in “other” box)'
+        damage_equipment_other: 'If Other selected, give details'
+        damage_operation: 'Select the operation performed at time of incident (note: if no appropriate category, specify in “other” box)'
+        damage_operation_other: 'If Other selected, give details'
+        cause: 'Specify details of cause'
+        immediate_causes: 'Specify immediate cause.'
+        immediate_causes_other: 'If Other selected, give details<br/>Example: A newly hired roughneck was not wearing safety glasses and gets a foreign body in his eye. The immediate cause would be: Failure to wear PPE (if he was wearing safety glasses it is unlikely that the incident would have occurred)'
+        underlying_causes: 'Specify underlying cause'
+        underlying_causes_other: 'If Other selected, give details<br/>Example: The underlying cause would likely be: Inadequate knowledge or skill. And, inadequate supervision (his supervisor did not explain the dangers and tell him to wear his glasses in that situation)'
+        risk_probability: 'Select the probability.'
+        risk_people_severity: 'Select the risk to people<br/>Example: For a person tripping, the most serious (yet realistic) damage that could be done is a minor injury and not a Lost Time Incident. This would be considered a slight injury or 1 according to the risk matrix. In the case of a sling failure, it could have resulted in a fatality, and is given a rating of 4.'
+        risk_assets_severity: 'Select the risk to assets<br/>Example: For a person tripping, there is no potential for damage to assets, thus 0. With a sling failure, the load could have been lost (if overboard at the time), thus a rating of 2.'
+        risk_environment_severity: 'Select the risk to the environment<br/>Example: Neither incident would have likely resulted in any environmental damage, although depending on the nature of the chemicals on the pallet there may have been some damage, so realistically a 2 is most likely.'
+        risk_reputation_severity: 'Select the risk to reputation<br/>Example: A person tripping is likely to have negligible effect on reputation, thus 0. A person killed as a result of a sling failure would have some localized impact, possibly a 2 depending on the location.'
+    # Labels and hints examples
+    # labels:
+    # password: 'Password'
+    # user:
+    # new:
+    # email: 'E-mail para efetuar o sign in.'
+    # edit:
+    # email: 'E-mail.'
+    # hints:
+    # username: 'User name to sign in.'
+    # password: 'No special characters, please.'
