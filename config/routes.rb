@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   namespace :publicity do
-    resources :qas, :qa_categories
+    resources :qas do
+         member do
+           get 'fade'
+         end
+    end
+    resources :qa_categories, :helps
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

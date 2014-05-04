@@ -2,15 +2,13 @@ $iconSpritePath: '';
 $iconWhiteSpritePath: '';
 @import 'bootstrap';
 
-.pagination {
-    height: 72px;
-    margin: 18px 0;
+.modal-dialog
+{
+  width: 960px;/* your width */
 }
 
-body .modal {
-    /* new custom width */
-    width: 960px;
-    /* must be half of the width, minus scrollbar on the left (30px) */
-    margin-left: -480px;
-    max-height: 960px;
-}
+/* input form-control for simple form
+-------------------------------------------------- */
+input.form-control{
+  width: auto;
+};

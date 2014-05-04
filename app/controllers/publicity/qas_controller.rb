@@ -21,6 +21,7 @@ class Publicity::QasController < InheritedResources::Base
     @qa = Publicity::Qa.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
+      format.js # index.js.erb
       format.pdf do
         type = params[:pdftype]
         pdf_cls = nil
@@ -43,12 +44,21 @@ class Publicity::QasController < InheritedResources::Base
     end
   end
 
+  def fade
+    @qa = Publicity::Qa.find(params[:id])
+    respond_to do |format|
+      format.js # index.js.erb
+    end
+  end
+
   def excel
     @qas = Publicity::Qa.all
     send_data @qas.to_xls_data(:columns => [:id, {:qa_category => [:id, :name] }, :question, :answer, :note, :created_at, :updated_at ]),
             :filename => "qas_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.xls"
 
   end
+
+
 
   def build_resource_params
     [params.fetch(:publicity_qa, {}).permit(:category1, :category2, :question, :answer, :note, :qa_category_id, :user_id, :reffile_file_name, :reffile_content_type, :reffile_file_size, :reffile_updated_at, :classification_type_id, :category_type_id, :rate)]

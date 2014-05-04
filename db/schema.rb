@@ -9,17 +9,24 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140414004736) do
+ActiveRecord::Schema.define(version: 20140503004701) do
 
-  create_table "publicity_qa_categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "publicity_helps", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "publicity_qas", :force => true do |t|
+  create_table "publicity_qa_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "publicity_qas", force: true do |t|
     t.string   "category1"
     t.string   "category2"
     t.text     "question"
@@ -34,10 +41,10 @@ ActiveRecord::Schema.define(:version => 20140414004736) do
     t.integer  "classification_type_id"
     t.integer  "category_type_id"
     t.integer  "rate"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "publicity_qas", ["qa_category_id"], :name => "index_publicity_qas_on_qa_category_id"
+  add_index "publicity_qas", ["qa_category_id"], name: "index_publicity_qas_on_qa_category_id"
 
 end

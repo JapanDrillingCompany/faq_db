@@ -1,0 +1,25 @@
+<!-- Navigation Menu including Bread Crumb Menu
+================================================== -->
+<%= render 'shared/breadcrumbs' %>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @helps.each do |publicity_help| %>
+      <tr>
+        <td><%= publicity_help.title %></td>
+        <td><%= publicity_help.content %></td>
+        <td class="last">
+	        <%= show_button publicity_help %> <%= edit_button publicity_help %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

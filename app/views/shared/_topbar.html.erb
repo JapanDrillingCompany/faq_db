@@ -1,12 +1,12 @@
 <header class="navbar navbar-inverse" role="navigation">
   <div class="container">
     <div class="navbar-header">
-    <%=link_to 'Home', root_path, :class => 'navbar-brand' %>
+    <%=link_to 'JDC総会支援システム', root_path, :class => 'navbar-brand' %>
     </div>
     <div class="col-sm-3 col-md-3 navbar-right">
-      <%= form_tag publicity_qas_path, :method => 'get', :class => "navbar-form", :role => "search" do %>
+      <%= form_tag publicity_qas_path, :method => 'get', :remote => true, :class => "navbar-form", :role => "search" do %>
         <div class="input-group">
-          <%= text_field_tag :keyword, params[:keyword], :class => "form-control", :id => "srch-term", :placeholder =>"Search" %>
+          <%= text_field_tag :keyword, params[:keyword], :class => "form-control", :id => "srch-term", :placeholder =>"想定問答から探す" %>
           <div class="input-group-btn">
 			<%= button_tag(:type => 'submit', :class => "btn btn-default") do %>
 			 <span class="glyphicon glyphicon-search"></span>
@@ -20,10 +20,16 @@
 	================================================== -->
     <ul class="nav navbar-nav">
 	    <li><%= link_to publicity_qas_path do %>
-		  <%= content_tag(:i, "", :class => "icon-screenshot") %> <%= t("activerecord.models.publicity/qa", :default => "FAQ") %>
+		  <%= content_tag(:i, "", :class => "icon-screenshot") %> 想定問答
 		  <% end %></li>
 	    <li><%= link_to publicity_qa_categories_path do %>
-		  <%= content_tag(:i, "", :class => "icon-screenshot") %> <%= t("activerecord.models.publicity/qa_category", :default => "Category") %>
+		  <%= content_tag(:i, "", :class => "icon-screenshot") %> 分類
+		  <% end %></li>
+	    <li><%= link_to publicity_helps_path do %>
+		  <%= content_tag(:i, "", :class => "icon-screenshot") %>短冊
+		  <% end %></li>
+	    <li><%= link_to publicity_helps_path do %>
+		  <%= content_tag(:i, "", :class => "icon-screenshot") %>議長の心構え
 		  <% end %></li>
     </ul>
     <!-- /nave -->

@@ -1,0 +1,9 @@
+<!-- Navigation Menu including Bread Crumb Menu
+================================================== -->
+<%= render 'shared/breadcrumbs' %>
+        <h2>短冊</h2>
+         <h3><%= @help.title %></h3>
+      <div class="form-group">
+          <%= edit_button(@help) %>
+	      <%= destroy_button(@help) %>
+      </div>

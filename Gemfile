@@ -43,3 +43,6 @@ gem 'simple_form'
 gem 'show_for'
 gem "paperclip", "~> 3.5.4"
 gem "aws-sdk", "~> 1.36.1"
+
+# Generate PDF
+gem 'prawn', '~> 1.0.0'

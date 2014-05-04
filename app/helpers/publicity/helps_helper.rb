@@ -1,0 +1,2 @@
+module Publicity::HelpsHelper
+end

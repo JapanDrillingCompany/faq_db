@@ -7,23 +7,15 @@
 	  <tr>
 	    <th>ID</th>
 	    <th class="col-md-9">Question</th>
-	    <th class="col-md-2">Category</th>
-	    <th>Action</th>
 	  </tr>
 	 </thead>
      <tbody>
       <% for qa in collection %>
        <tr id="qa_<%= qa.id %>">
-	        <td><%=h qa.id %><%= check_box_tag "qa_ids[]", qa.id, false, :class => 'shiftCheckbox' %></td>
+	        <td><%= qa.id %></td>
 	        <td><a id="qa<%=h qa.id %>" href="#qa_modal-<%= qa.id %>" data-toggle="modal">
-	            <%= rm_html_tag(qa.question) %></a></td>
-	        <td><%=h qa.qa_category.try(:name) || "N/A" %></td>
-            <td class="last">
-	            <%= show_button qa %> <%= edit_button qa %>
-	            <%= link_to publicity_qa_path(qa,{:format => 'pdf'}), :class => "btn btn-success", :target => "_blank" do %>
-				<i class="icon-file"></i> PDF
-				<% end %>
-	        </td>
+	            <%= rm_html_tag(qa.question) %></a><br/>
+	            <%= rm_html_tag(qa.answer) %><%= link_to "議長に表示→", qa, {:remote => true} %></td>
        </tr>
        <div id="qa_modal-<%= qa.id %>" class="modal fade">
 		  <div class="modal-dialog modal-lg">
@@ -44,6 +36,9 @@
          <div class="modal-footer">
 			<%= show_button(qa) %>
 			<%= edit_button(qa) %>
+            <%= link_to publicity_qa_path(qa,{:format => 'pdf'}), :class => "btn btn-success", :target => "_blank" do %>
+			<i class="icon-file"></i> PDF
+			<% end %>
          </div>
 	       </div>
 	      </div>
