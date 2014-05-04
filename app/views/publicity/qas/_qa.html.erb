@@ -1,5 +1,4 @@
 <div id="right_<%= qa.id %>">
 <h3><%=h qa.id %> <%= qa.question %>(<%=h qa.qa_category.name %>)</h3>
 <h4><p><%= (hbr(qa.answer)).html_safe %></p></h4>
-<h3>以上、ご回答申し上げました。</h3>
-<%= link_to "消す", [:fade, qa], :remote => true %>
+<h3>以上、ご回答申し上げました。 <%= link_to "消す", [:fade, qa], :remote => true, :class => "btn btn-danger btn-sm" %></h3>

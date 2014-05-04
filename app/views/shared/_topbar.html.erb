@@ -22,14 +22,19 @@
 	    <li><%= link_to publicity_qas_path do %>
 		  <%= content_tag(:i, "", :class => "icon-screenshot") %> 想定問答
 		  <% end %></li>
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">短冊 <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+	　　　　　　　　<% Publicity::Help.all.each do |help| %>
+	        <li><%= link_to help.title, help, {:remote => true} %></li>
+	        <% end %>
+	      </ul>
+	    </li>
+	    <li><%= link_to publicity_helps_path do %>
+		  <%= content_tag(:i, "", :class => "icon-screenshot") %>短冊編集
+		  <% end %></li>
 	    <li><%= link_to publicity_qa_categories_path do %>
 		  <%= content_tag(:i, "", :class => "icon-screenshot") %> 分類
-		  <% end %></li>
-	    <li><%= link_to publicity_helps_path do %>
-		  <%= content_tag(:i, "", :class => "icon-screenshot") %>短冊
-		  <% end %></li>
-	    <li><%= link_to publicity_helps_path do %>
-		  <%= content_tag(:i, "", :class => "icon-screenshot") %>議長の心構え
 		  <% end %></li>
     </ul>
     <!-- /nave -->
