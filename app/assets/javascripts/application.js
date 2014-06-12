@@ -15,3 +15,9 @@
 //= require bootstrap
 //= require bootstrap_additions
 //= require_tree .
+
+  $(function(){
+    $('.affix').affix({
+  }
+  });
+  });

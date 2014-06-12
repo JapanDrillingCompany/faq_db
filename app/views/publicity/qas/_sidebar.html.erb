@@ -1,4 +1,4 @@
-<div class="well sidebar_search_publicity_qas">
+<div id="sidebar" class="well sidebar_search_publicity_qas" data-spy="affix" data-offset-top="0px" style="min-width:21%;margin-top:10px;">
   <h3><%= t("action.search", :default => "Search") %></h3>
       <%= form_tag publicity_qas_path, :method => 'get', :id => "sidebar_search" do %>
 		<dt><%= label :qa_category_id, "Project" %></dt>
