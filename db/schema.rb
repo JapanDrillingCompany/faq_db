@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503004701) do
+ActiveRecord::Schema.define(version: 20140616010402) do
 
   create_table "publicity_helps", force: true do |t|
     t.string   "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140503004701) do
     t.integer  "rate"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "answerer"
   end
 
   add_index "publicity_qas", ["qa_category_id"], name: "index_publicity_qas_on_qa_category_id"
