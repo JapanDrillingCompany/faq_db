@@ -1,5 +1,6 @@
 <div id="right_<%= qa.id %>">
-<h2><%=h qa.id %> <%= qa.question %>(<%=h qa.qa_category.name %>-<%= rm_html_tag(qa.answerer) %>)</h2>
+<h2><%=h qa.id %> <%= qa.question %>(<% if qa.qa_category_id == 1 %><span class="label label-success"><% else %><span class="label label-primary"><% end %><%= qa.qa_category.name %></span>-<span class="label label-info"><%= rm_html_tag(qa.answerer) %></span>)</h2>
 <h3><p><%= (hbr(qa.answer)).html_safe %></p></h4>
 <h2>以上、ご回答申し上げました。 <%= link_to "消す", [:fade, qa], :remote => true, :class => "btn btn-danger btn-sm" %></h2>
+<%= qa.note %>
 <hr/>

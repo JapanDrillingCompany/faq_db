@@ -16,8 +16,15 @@
 //= require bootstrap_additions
 //= require_tree .
 
-  $(function(){
+$(function(){
     $('.affix').affix({
   }
   });
-  });
+});
+
+jQuery( function() {
+    jQuery( '#jquery-ui-toggle' ) . button();
+    jQuery( '#jquery-ui-toggle' ) . click( function() {
+        jQuery( '#jquery-ui-effect' ) . toggle( 'pulsate', '', 500 );
+    } );
+} );

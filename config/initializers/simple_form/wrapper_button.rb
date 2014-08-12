@@ -1,7 +1,7 @@
 # Check out WIKI for SimpleForm. https://github.com/plataformatec/simple_form/wiki/Twitter-Bootstrap-v2-and-simple_form-v2
 module WrappedButton
   def wrapped_button(*args, &block)
-    template.content_tag :div, :class => "form-actions" do
+    template.content_tag :div, :class => "col-sm-offset-2 col-sm-10" do
       options = args.extract_options!
       loading = self.object.new_record? ? I18n.t('simple_form.creating') : I18n.t('simple_form.updating')
       options[:"data-loading-text"] = [loading, options[:"data-loading-text"]].compact

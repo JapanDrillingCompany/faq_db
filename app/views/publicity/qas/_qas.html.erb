@@ -1,14 +1,22 @@
 <%= link_to '全部リセット', publicity_qas_path %>
-	  <div class="pagination">
-		<%= paginate collection %>
-	  </div>
+<div class="pagination">
+	<%= paginate collection %>
+</div>
 <div class="panel-group" id="accordion">
       <% for qa in collection %>
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h5 class="panel-title">
 	        <a data-toggle="collapse" data-parent="#accordion" href="#qa_<%= qa.id %>">
-	          <%= qa.id %> <%= rm_html_tag(qa.question) %>-<%= rm_html_tag(qa.answerer) %>
+	          <%= qa.id %> <%= rm_html_tag(qa.question) %>
+	          <% if qa.qa_category_id == 1 %>
+	             <span class="label label-success">
+	          <% else %>
+	             <span class="label label-primary">
+	          <% end %>
+	             <%= qa.qa_category.name %></span>-
+	          <% if qa.answerer == "市川" %><span class="label label-success"><% else %><span class="label label-primary"><% end %>
+	             <%= rm_html_tag(qa.answerer) %></span>
 	        </a>
 	      </h5>
 	    </div>
