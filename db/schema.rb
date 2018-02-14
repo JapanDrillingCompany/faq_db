@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140616010402) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "publicity_helps", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140616010402) do
 
   create_table "publicity_qa_categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "publicity_qas", force: true do |t|
@@ -41,11 +44,11 @@ ActiveRecord::Schema.define(version: 20140616010402) do
     t.integer  "classification_type_id"
     t.integer  "category_type_id"
     t.integer  "rate"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "answerer"
   end
 
-  add_index "publicity_qas", ["qa_category_id"], name: "index_publicity_qas_on_qa_category_id"
+  add_index "publicity_qas", ["qa_category_id"], name: "index_publicity_qas_on_qa_category_id", using: :btree
 
 end
