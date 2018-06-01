@@ -1,3 +1,3 @@
-class Publicity::Help < ActiveRecord::Base
+class Publicity::Help < ApplicationRecord
 include CommonNext
 end

@@ -4,7 +4,7 @@
 # Author:: 藤本弘志 (mailto:hfujimoto@gmail.com)
 
 # Publicity::QaCategory Model Class
-class Publicity::QaCategory < ActiveRecord::Base
+class Publicity::QaCategory < ApplicationRecord
     include CommonNext
 
   # Setting Table Name
