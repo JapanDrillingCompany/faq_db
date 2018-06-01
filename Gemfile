@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
 source 'http://rubygems.org'
 # source "http://gems.github.com"
-ruby '2.3.5'
+ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails's
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '~> 0.11'
+gem 'pg', '~> 0.18'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '5.0.6'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '>= 1.3'
-
-gem 'jquery-rails'
+gem 'uglifier', '>= 2.5.1'
+gem 'autoprefixer-rails', '>= 7.1.0'
+gem 'jquery-rails', '~> 4.1.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -42,11 +42,11 @@ gem 'jquery-rails'
 
 # Refactor Controllers
 gem 'inherited_resources'
-gem 'kaminari'
-gem 'simple_form'
-gem 'show_for', '~> 0.4.0'
-gem 'paperclip', '~> 4.3.6'
-gem 'aws-sdk', '~> 1.67.0'
+gem 'kaminari', '~> 1.0.1'
+gem 'simple_form', '~> 3.5'
+gem 'show_for', '~> 0.6.0'
+gem 'paperclip', '~> 5.1.0'
+gem 'aws-sdk', '~> 2.3.0'
 
 # Generate PDF
-gem 'prawn', '~> 1.0.0'
+gem 'prawn', '~> 2.1.0'

@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 20140616010402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "publicity_helps", force: true do |t|
+  create_table "publicity_helps", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "publicity_qa_categories", force: true do |t|
+  create_table "publicity_qa_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "publicity_qas", force: true do |t|
+  create_table "publicity_qas", force: :cascade do |t|
     t.string   "category1"
     t.string   "category2"
     t.text     "question"
