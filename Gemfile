@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails's
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -51,7 +51,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Refactor Controllers
 gem 'inherited_resources', '~> 1.8.0'
 gem 'kaminari', '~> 1.0.1'
-gem 'simple_form', '~> 3.5.1'
+gem 'simple_form', '~> 4.0.1'
 gem 'show_for', '~> 0.6.1'
 gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2.3.0'
