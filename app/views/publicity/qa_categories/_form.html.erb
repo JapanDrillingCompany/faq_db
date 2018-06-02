@@ -1,4 +1,4 @@
-<%= simple_form_for(@qa_category, :validate => true) do |f| %>
+<%= simple_form_for(@qa_category, :validate => true, defaults: { input_html: { class: 'form-inline' }}) do |f| %>
 <div class="row">
   <div class="group">
     <%= f.input :name %>

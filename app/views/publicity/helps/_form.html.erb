@@ -1,4 +1,4 @@
-<%= simple_form_for(@help, :validate => true) do |f| %>
+<%= simple_form_for(@help, :validate => true, defaults: { input_html: { class: 'form-inline' }}) do |f| %>
   <% if @help.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@help.errors.count, "error") %> prohibited this publicity_help from being saved:</h2>

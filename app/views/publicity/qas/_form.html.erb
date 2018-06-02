@@ -1,4 +1,4 @@
-<%= simple_form_for(@qa, :validate => true, defaults: { input_html: { class: 'form-control' }}) do |f| %>
+<%= simple_form_for(@qa, :validate => true, defaults: { input_html: { class: 'form-inline' }}) do |f| %>
 <div class="row">
   <div class="col-md-12">
   <%= f.association :qa_category, :collection => Publicity::QaCategory.all, :label_method=> :name %>
