@@ -15,7 +15,7 @@ gem 'pg', '~> 0.18'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails', '5.0.6'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.1.1'
 gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

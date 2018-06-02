@@ -1,6 +1,4 @@
-<header class="navbar navbar-inverse" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
+<header class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
     <%=link_to '検索システムV2', root_path, :class => 'navbar-brand' %>
     </div>
     <div class="col-sm-3 col-md-3 navbar-right">
@@ -9,7 +7,7 @@
           <%= text_field_tag :keyword, params[:keyword], :class => "form-control", :id => "srch-term", :placeholder =>"想定問答から探す" %>
           <div class="input-group-btn">
 			<%= button_tag(:type => 'submit', :class => "btn btn-default") do %>
-			 <span class="glyphicon glyphicon-search"></span>
+			 検索
 			<% end %>
           </div>
         </div>
@@ -19,18 +17,18 @@
 	<!-- Navigation Menu
 	================================================== -->
     <ul class="nav navbar-nav">
-	    <li><%= link_to publicity_qas_path do %>
+	    <li class="nav-item"><%= link_to publicity_qas_path, class: "nav-link" do %>
 		  <%= content_tag(:i, "", :class => "icon-screenshot") %> 想定問答
 		  <% end %></li>
-      <li><%= link_to "カテゴリー管理", publicity_qa_categories_path %></li>
-      <li><%= link_to "短冊管理", publicity_helps_path %></li>
-	 <li class="dropdown">
-	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">短冊 <b class="caret"></b></a>
-	      <ul class="dropdown-menu">
+      <li class="nav-item"><%= link_to "カテゴリー管理", publicity_qa_categories_path, class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "短冊管理", publicity_helps_path, class: "nav-link" %></li>
+	    <li class="nav-item dropdown">
+	      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">短冊 <b class="caret"></b></a>
+	      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	　　　　　　　　<% Publicity::Help.all.each do |help| %>
-	        <li><%= link_to help.title, help, {:remote => true} %></li>
+	             <%= link_to help.title, help, {:remote => true, class: "dropdown-item"} %>
 	        <% end %>
-	      </ul>
+	      </div>
 	    </li>
 	 <!--<li><%= link_to publicity_helps_path do %>
 		  <%= content_tag(:i, "", :class => "icon-screenshot") %>短冊管理
@@ -41,6 +39,4 @@
     </ul>
     <!-- /nave -->
     </div>
-    </div>
-  </div>
 </header>

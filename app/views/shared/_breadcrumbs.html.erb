@@ -1,34 +1,36 @@
+<nav aria-label="パンくずリスト">
 <ul class="breadcrumb">
-      <li><%= link_to root_url, {:rel => "tooltip", :title => "Go back to the Top Page." } do %>
+      <li class="breadcrumb-item" aria-current="page"><%= link_to root_url, {:rel => "tooltip", :title => "Go back to the Top Page." } do %>
 		  <%= content_tag(:i, "", :class => "icon-home") %> <%= t("home_title", :default => "Home") %>
 		  <% end %></li>
 	<% if action_name == "index" %>
-	  <li class="active">
+	  <li class="breadcrumb-item active">
 	<% else %>
-	  <li>
+	  <li class="breadcrumb-item active">
 	<% end %>
           <%= content_tag(:i, "", :class => "icon-th-list") %> <%= link_to "#{t("action.list", :default => "List")}", collection_url, {:rel => "tooltip", :title => "Check the list of data" }  %> (<%= t("activerecord.models.#{resource_class.to_s.underscore}", :default => resource_class.to_s.demodulize) %>)</li>
 	<% if action_name == "new" %>
-	  <li class="active">
+	  <li class="breadcrumb-item active">
 	<% else %>
-	  <li>
+	  <li class="breadcrumb-item active">
 	<% end %>
 	      <%= link_to new_resource_url, {:rel => "tooltip", :title => "Add new data", :id => "new-link" } do %><%= content_tag(:i, "", :class => "icon-plus") %> <%= t("action.new", :default => "New") %><% end %>
 	</li>
 	<% if action_name == "show" %>
-	  <li class="active"><%= link_to resource_url do %>
+	  <li class="breadcrumb-item active"><%= link_to resource_url do %>
 		  <%= content_tag(:i, "", :class => "icon-info-sign") %> <%= t("action.show", :default => "Show") %>
 		  <% end %></li>
 	<% elsif action_name == "edit" %>
-	  <li class="active"><%= link_to edit_resource_url do %>
+	  <li class="breadcrumb-item active"><%= link_to edit_resource_url do %>
 		  <%= content_tag(:i, "", :class => "icon-pencil") %> <%= t("action.edit", :default => "Edit") %>
 		  <% end %></li>
 	<% end %>
-	<li><%= content_tag(:i, "", :class => "icon-backward") %> <%= link_to "Back", :back %></li>
+	<li class="breadcrumb-item"><%= content_tag(:i, "", :class => "icon-backward") %> <%= link_to "Back", :back %></li>
 </ul>
 <% if action_name == "show" %>
 <ul class="pager">
- <li class="previous"><%= link_to t("action.previous", :default => "Previous"), resource.previous_record %></li>	
+ <li class="previous"><%= link_to t("action.previous", :default => "Previous"), resource.previous_record %></li>
  <li class="next"><%= link_to t("action.next", :default => "Next"), resource.next_record %></li>
 </ul>
 <% end %>
+</li>

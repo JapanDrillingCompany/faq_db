@@ -11,9 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require popper
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require bootstrap
-//= require bootstrap_additions
 //= require_tree .
 
 $(function(){
